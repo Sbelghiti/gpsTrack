@@ -1,0 +1,22 @@
+    
+    
+    
+'''
+    pour créer un item dans la base de données : 
+    from Temp.models import Temp
+    new_item = Temp.objects.create(temp="12")
+    mon_item.temp >> 12
+    mon_item.date >> la data
+    mon_item.id >>1
+    
+    
+    ou
+    
+    
+    mon_item2 = Temp(temp="19")
+    ici l'oject n'est pas encore créé par exemple mon_item2.id est null
+    mon_item2.save()
+    maintenant l'object est créé mon_item2.id >> 2
+    
+    Temp.objects.all >> la liste de tout les objets de la DB
+'''
