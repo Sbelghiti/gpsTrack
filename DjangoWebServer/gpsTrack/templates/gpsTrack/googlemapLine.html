@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+{% if latest_list %}
+		<title>GpsTrack</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<!-- Element Google Maps indiquant que la carte doit Ãªtre affichee en plein ecran et
+		qu'elle ne peut pas etre redimensionnee par l'utilisateur -->
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<!-- Inclusion de l'API Google MAPS -->
+		<!-- Le paramÃ¨tre "sensor" indique si cette application utilise dÃ©tecteur pour dÃ©terminer la position de l'utilisateur -->
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+			function initialiser() {
+	
+	
+	var latlng = new google.maps.LatLng({{latest_list.last.latitude}},{{latest_list.last.longitude}});
+	var options = {
+		center: latlng,
+		zoom: 7,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	
+	var mymap = new google.maps.Map(document.getElementById("mymap"), options);
+	
+	var flightPlanCoordinates = [];
+	
+	
+	{% for item in latest_list %}
+	var mark = new google.maps.Marker({
+		position: new google.maps.LatLng({{item.latitude}},{{item.longitude}}),
+		map: mymap
+	});
+	{% endfor %}
+	
+	var flightPlanCoordinates = [
+	new google.maps.LatLng({{latest_list.first.latitude}},{{latest_list.first.longitude}}),
+	new google.maps.LatLng({{latest_list.last.latitude}},{{latest_list.last.longitude}})
+	];
+	
+    var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+  flightPath.setMap(mymap);
+}
+
+{% endif %}
+		</script>
+	</head>
+	<body onload="initialiser()">
+		<div id="mymap" style="width:100%; height:100%"></div>
+	</body>
+</html>
