@@ -14,5 +14,5 @@ urlpatterns = patterns('',
     url(r'^index/' , 'Temp.views.index'),
     url(r'^postgps' , 'gpsTrack.views.post'),
     url(r'^map/', 'gpsTrack.views.getGPSCoord'),
-    url(r'^mapline/', 'gpsTrack.views.getGPSmapLine')
+    url(r'^mapline/', 'gpsTrack.views.getGPSmapLine2')
 )
