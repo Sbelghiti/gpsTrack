@@ -3,7 +3,7 @@
     <ul>
     {% for item in latest_list %}
     <TABLE bgColor=red height=20 width={{item.temp}} cellSpacing=0 cellPadding=0 border= 0> <TR><TD></TD></TR>
-    	<p> {{item.date}} valeur : {{item.temp}}
+    	<p> id = {{item.id}} date :  {{item.date}} valeur : {{item.temp}}
         
         </p>
     {% endfor %}
