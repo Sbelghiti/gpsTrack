@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^testdb/$', 'Temp.views.testdb'),
     url(r'^admin/', include(admin.site.urls)),      #to access to database on navigator
     url(r'^index/' , 'Temp.views.index'),
-    url(r'^postgps*' , 'gpsTrack.views.post'),
-    url(r'^map/', 'gpsTrack.views.getGPSCoord')
+    url(r'^postgps' , 'gpsTrack.views.post'),
+    url(r'^map/', 'gpsTrack.views.getGPSCoord'),
+    url(r'^mapline/', 'gpsTrack.views.getGPSmapLine')
 )
